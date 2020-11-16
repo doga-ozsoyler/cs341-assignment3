@@ -18,16 +18,16 @@ void LQ::insert(int new_data){
 
     int mod = new_data % data_vec.size();
     int division = new_data / data_vec.size();
-    
+
     int i = mod;
-    while(data_vec[i].valid != false)
+    int noLoop = 0; //if list is full
+    while(data_vec[i].valid != false && noLoop <= data_vec.size())
     {
         i = (i + division) % data_vec.size();
+        noLoop++;
     }
     data_vec[i].data = new_data;
     data_vec[i].valid = true;
-    
-
 }
 
 
