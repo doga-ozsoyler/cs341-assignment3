@@ -16,6 +16,26 @@ LQ::LQ(int table_size){
 
 void LQ::insert(int new_data){
 
+    int mod = new_data % data_vec.size();
+
+    if(data_vec[mod].valid == false)
+    {
+        data_vec[mod].data = new_data;
+        data_vec[mod].valid = true;
+    }
+    else
+    {
+        int division = new_data / data_vec.size();
+        int i = mod;
+        while(data_vec[i].valid != false)
+        {
+            i = (i + division) % data_vec.size();
+        }
+        data_vec[i].data = new_data;
+        data_vec[i].valid = true;
+    }
+    
+
 }
 
 
