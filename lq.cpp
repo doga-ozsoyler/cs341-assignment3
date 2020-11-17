@@ -45,13 +45,13 @@ int LQ::find_num_probes(int key) const{
     int division = key / data_vec.size();
 
     int i = mod;
-    int probes_num = 1;
+    int probe_num = 1;
     int noLoop = 0; //if list is full
     while(data_vec[i].data != key && noLoop <= data_vec.size())
     {
         i = (i + division) % data_vec.size();
         noLoop++;
-        probes_num++;
+        probe_num++;
     }
 
     if(noLoop > data_vec.size())
@@ -59,13 +59,31 @@ int LQ::find_num_probes(int key) const{
         cout << key << " doesn't exist!!!" << endl;
         return -1;
     }
-    return probes_num;
+    return probe_num;
 }
 
 
 
 double LQ::find_average_num_probes() const{
 
+    double probes_sum = 0;
+    double data_num = 0;
+
+    for(int i = 0; i < data_vec.size(); i++)
+    {
+        if(data_vec[i].data != -1)
+        {
+            probes_sum = probes_sum + find_num_probes(data_vec[i].data);
+            data_num++;
+        }
+    }
+
+    if(probes_sum == 0 && data_num == 0)
+    {
+        cout << "List is empty!!!" << endl;
+    }
+    
+    return probes_sum / data_num;
 }
 
 bool LQ::does_include(int key) const{
