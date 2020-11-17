@@ -26,6 +26,12 @@ void LQ::insert(int new_data){
         i = (i + division) % data_vec.size();
         noLoop++;
     }
+    if(noLoop > data_vec.size())
+    {
+        cout << "List is full!!! "
+        << new_data << " couldn't be added." << endl;
+        return;
+    }
     data_vec[i].data = new_data;
     data_vec[i].valid = true;
 }
