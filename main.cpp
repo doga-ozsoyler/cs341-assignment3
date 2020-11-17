@@ -39,5 +39,8 @@ int main(){
     cout << "16probe=" << list.find_num_probes(16) << " ";
     cout << endl;
 
+    cout << "average num probes= " << list.find_average_num_probes()
+    << endl;
+
     return 0;
 }
