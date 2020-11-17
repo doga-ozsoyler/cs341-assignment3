@@ -42,5 +42,8 @@ int main(){
     cout << "average num probes= " << list.find_average_num_probes()
     << endl;
 
+    cout << "39= " << list.does_include(39) << endl;
+    cout << "5= " << list.does_include(5) << endl;
+    
     return 0;
 }
