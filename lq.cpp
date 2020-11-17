@@ -26,6 +26,7 @@ void LQ::insert(int new_data){
         i = (i + division) % data_vec.size();
         noLoop++;
     }
+
     if(noLoop > data_vec.size())
     {
         cout << "List is full!!! "
@@ -40,6 +41,25 @@ void LQ::insert(int new_data){
 
 int LQ::find_num_probes(int key) const{
 
+    int mod = key % data_vec.size();
+    int division = key / data_vec.size();
+
+    int i = mod;
+    int probes_num = 1;
+    int noLoop = 0; //if list is full
+    while(data_vec[i].data != key && noLoop <= data_vec.size())
+    {
+        i = (i + division) % data_vec.size();
+        noLoop++;
+        probes_num++;
+    }
+
+    if(noLoop > data_vec.size())
+    {
+        cout << key << " doesn't exist!!!" << endl;
+        return -1;
+    }
+    return probes_num;
 }
 
 
